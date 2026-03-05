@@ -1,5 +1,6 @@
 import { makeAutoObservable } from 'mobx';
 import axios from 'axios';
+import { API_URL } from '../config';
 
 export interface Product {
   id: number;
@@ -18,7 +19,7 @@ class ProductsStore {
   async fetchProducts() {
     this.loading = true;
     try {
-      const response = await axios.get<Product[]>('http://localhost:3001/api/products');
+      const response = await axios.get<Product[]>(`${API_URL}/api/products`);
       this.products = response.data;
     } catch (error) {
       console.error('Failed to fetch products', error);

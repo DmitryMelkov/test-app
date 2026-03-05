@@ -1,5 +1,6 @@
 import { makeAutoObservable } from 'mobx';
 import axios from 'axios';
+import { API_URL } from '../config';
 
 export interface Stats {
   totalUsers: number;
@@ -19,7 +20,7 @@ class StatsStore {
   async fetchStats() {
     this.loading = true;
     try {
-      const response = await axios.get<Stats>('http://localhost:3001/api/stats');
+      const response = await axios.get<Stats>(`${API_URL}/api/stats`);
       this.stats = response.data;
     } catch (error) {
       console.error('Failed to fetch stats', error);

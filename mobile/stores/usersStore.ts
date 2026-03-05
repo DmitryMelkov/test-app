@@ -1,5 +1,6 @@
 import { makeAutoObservable } from 'mobx';
 import axios from 'axios';
+import { API_URL } from '../config';
 
 export interface User {
   id: number;
@@ -18,7 +19,7 @@ class UsersStore {
   async fetchUsers() {
     this.loading = true;
     try {
-      const response = await axios.get<User[]>('http://localhost:3001/api/users');
+      const response = await axios.get<User[]>(`${API_URL}/api/users`);
       this.users = response.data;
     } catch (error) {
       console.error('Failed to fetch users', error);
