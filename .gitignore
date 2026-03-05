@@ -9,3 +9,14 @@ package-lock.json
 yarn.lock
 .expo/
 .expo-shared/
+.next/
+*.tgz
+*.tar.gz
+coverage/
+.nyc_output/
+.cache/
+.parcel-cache/
+.temp/
+.tmp/
+.vercel/
+.netlify/
