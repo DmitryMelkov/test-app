@@ -1,19 +1,16 @@
-import type { Metadata } from 'next'
-import './globals.css'
+'use client';
 
-export const metadata: Metadata = {
-  title: 'Test Dashboard',
-  description: 'Next.js dashboard app',
-}
+import type { Metadata } from 'next';
+import { observer } from 'mobx-react-lite';
+import { themeStore } from '@/stores/themeStore';
+import './globals.css';
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+const RootLayout = observer(({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className={themeStore.theme}>{children}</body>
     </html>
-  )
-}
+  );
+});
+
+export default RootLayout;

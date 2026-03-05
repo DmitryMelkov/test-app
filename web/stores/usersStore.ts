@@ -1,4 +1,4 @@
-import { makeAutoObservable } from 'mobx';
+import { makeAutoObservable, runInAction } from 'mobx';
 import axios from 'axios';
 
 export interface User {
@@ -19,11 +19,15 @@ class UsersStore {
     this.loading = true;
     try {
       const response = await axios.get<User[]>('http://localhost:3001/api/users');
-      this.users = response.data;
+      runInAction(() => {
+        this.users = response.data;
+      });
     } catch (error) {
       console.error('Failed to fetch users', error);
     } finally {
-      this.loading = false;
+      runInAction(() => {
+        this.loading = false;
+      });
     }
   }
 }

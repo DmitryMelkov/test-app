@@ -1,59 +1,29 @@
 'use client';
 
 import { observer } from 'mobx-react-lite';
-import { useEffect } from 'react';
-import { usersStore } from '@/stores/usersStore';
-import { statsStore } from '@/stores/statsStore';
-import ReactECharts from 'echarts-for-react';
+import { useFetchData } from '@/hooks/useFetchData';
+import DashboardStats from '@/components/DashboardStats/DashboardStats';
+import ProductsList from '@/components/ProductsList/ProductsList';
+import OrdersList from '@/components/OrdersList/OrdersList';
+import UsersList from '@/components/UsersList/UsersList';
+import Header from '@/components/Header/Header';
+import Text from '@/ui/Text';
 
 const Dashboard = observer(() => {
-  useEffect(() => {
-    usersStore.fetchUsers();
-    statsStore.fetchStats();
-  }, []);
-
-  const chartOption = {
-    title: {
-      text: 'Stats Overview'
-    },
-    tooltip: {},
-    legend: {
-      data: ['Stats']
-    },
-    xAxis: {
-      data: ['Users', 'Orders', 'Revenue']
-    },
-    yAxis: {},
-    series: [{
-      name: 'Value',
-      type: 'bar',
-      data: statsStore.stats ? [
-        statsStore.stats.totalUsers,
-        statsStore.stats.totalOrders,
-        statsStore.stats.revenue
-      ] : []
-    }]
-  };
+  useFetchData();
 
   return (
     <div>
-      <h1>Dashboard</h1>
-      {statsStore.loading ? <p>Loading stats...</p> : (
-        <div>
-          <p>Total Users: {statsStore.stats?.totalUsers}</p>
-          <p>Total Orders: {statsStore.stats?.totalOrders}</p>
-          <p>Revenue: {statsStore.stats?.revenue}</p>
-          <ReactECharts option={chartOption} />
+      <Header />
+      <div style={{ paddingTop: '20px' }}>
+        <h1 style={{ margin: '0 0 20px 0' }}>Dashboard</h1>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+          <DashboardStats />
+          <ProductsList />
+          <OrdersList />
+          <UsersList />
         </div>
-      )}
-      <h2>Users</h2>
-      {usersStore.loading ? <p>Loading users...</p> : (
-        <ul>
-          {usersStore.users.map(user => (
-            <li key={user.id}>{user.name} - {user.email}</li>
-          ))}
-        </ul>
-      )}
+      </div>
     </div>
   );
 });
