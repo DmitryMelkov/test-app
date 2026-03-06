@@ -1,4 +1,4 @@
-import { makeAutoObservable } from 'mobx';
+import { makeAutoObservable, runInAction } from 'mobx';
 import axios from 'axios';
 import { API_URL } from '../config';
 
@@ -6,6 +6,7 @@ export interface Stats {
   totalUsers: number;
   totalOrders: number;
   totalProducts: number;
+  totalCategories: number;
   revenue: number;
 }
 
@@ -21,13 +22,16 @@ class StatsStore {
     this.loading = true;
     try {
       const response = await axios.get<Stats>(`${API_URL}/api/stats`);
-      this.stats = response.data;
+      runInAction(() => {
+        this.stats = response.data;
+      });
     } catch (error) {
       console.error('Failed to fetch stats', error);
     } finally {
-      this.loading = false;
+      runInAction(() => {
+        this.loading = false;
+      });
     }
   }
 }
-
 export const statsStore = new StatsStore();

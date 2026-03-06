@@ -1,6 +1,9 @@
 import React from 'react';
 
-const Text = ({ children, ...props }: React.PropsWithChildren<React.HTMLAttributes<HTMLSpanElement>>) => (
+const Text = ({
+  children,
+  ...props
+}: React.PropsWithChildren<React.HTMLAttributes<HTMLSpanElement>>) => (
   <span {...props}>{children}</span>
 );
 

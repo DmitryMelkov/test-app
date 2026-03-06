@@ -17,7 +17,8 @@ const OrdersList = observer(() => {
             {ordersStore.orders.map((order) => (
               <div key={order.id}>
                 <Text>
-                  Order {order.id}: User {order.userId} - Product {order.productId} (Qty: {order.quantity})
+                  Order {order.id}: User {order.userId} - Product {order.productId} (Qty:{' '}
+                  {order.quantity})
                 </Text>
               </div>
             ))}

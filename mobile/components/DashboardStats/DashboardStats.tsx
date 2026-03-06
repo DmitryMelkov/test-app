@@ -17,11 +17,8 @@ const DashboardStats = observer(() => {
   const data = [
     { value: stats?.totalUsers || 0, label: 'Users', frontColor: '#1890ff' },
     { value: stats?.totalOrders || 0, label: 'Orders', frontColor: '#1890ff' },
-    {
-      value: stats?.totalProducts || 0,
-      label: 'Products',
-      frontColor: '#1890ff',
-    },
+    { value: stats?.totalProducts || 0, label: 'Products', frontColor: '#1890ff' },
+    { value: stats?.totalCategories || 0, label: 'Cats', frontColor: '#1890ff' },
   ];
 
   return (
@@ -36,8 +33,8 @@ const DashboardStats = observer(() => {
     >
       <Text style={[styles.title, { color: isDark ? '#fff' : '#000' }]}>Statistics</Text>
       <Text style={[styles.summary, { color: isDark ? '#aaa' : '#666' }]}>
-        Total Users: {stats?.totalUsers} Total Orders: {stats?.totalOrders} Total Products:{' '}
-        {stats?.totalProducts} Revenue: ${stats?.revenue}
+        Users: {stats?.totalUsers} | Orders: {stats?.totalOrders} | Products: {stats?.totalProducts}{' '}
+        | Cats: {stats?.totalCategories} | Rev: ${stats?.revenue}
       </Text>
       <Text style={[styles.subTitle, { color: isDark ? '#fff' : '#000' }]}>Stats Overview</Text>
       <View style={styles.chartContainer}>

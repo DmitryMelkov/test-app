@@ -22,7 +22,7 @@ export const getChartOption = (stats: Stats | null, theme: string) => {
       textStyle: { color: textColor },
     },
     xAxis: {
-      data: ['Users', 'Orders', 'Products'],
+      data: ['Users', 'Orders', 'Products', 'Cats'],
       axisLabel: { color: textColor },
       axisLine: { lineStyle: { color: borderColor } },
       splitLine: { lineStyle: { color: borderColor } },
@@ -36,7 +36,9 @@ export const getChartOption = (stats: Stats | null, theme: string) => {
       {
         name: 'Value',
         type: 'bar',
-        data: stats ? [stats.totalUsers, stats.totalOrders, stats.totalProducts] : [],
+        data: stats
+          ? [stats.totalUsers, stats.totalOrders, stats.totalProducts, stats.totalCategories]
+          : [],
         itemStyle: {
           color: isDark ? '#1890ff' : '#1890ff',
         },

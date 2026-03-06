@@ -5,9 +5,9 @@ export interface Stats {
   totalUsers: number;
   totalOrders: number;
   totalProducts: number;
+  totalCategories: number;
   revenue: number;
 }
-
 class StatsStore {
   stats: Stats | null = null;
   loading = false;

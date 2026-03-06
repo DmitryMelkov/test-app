@@ -16,9 +16,10 @@ const DashboardStats = observer(() => {
         <Text>Loading stats...</Text>
       ) : (
         <div>
-          <Text>Total Users: {statsStore.stats?.totalUsers}</Text>
-          <Text>Total Orders: {statsStore.stats?.totalOrders}</Text>
-          <Text>Total Products: {statsStore.stats?.totalProducts}</Text>
+          <Text>Total Users: {statsStore.stats?.totalUsers} | </Text>
+          <Text>Total Orders: {statsStore.stats?.totalOrders} | </Text>
+          <Text>Total Products: {statsStore.stats?.totalProducts} | </Text>
+          <Text>Total Categories: {statsStore.stats?.totalCategories} | </Text>
           <Text>Revenue: ${statsStore.stats?.revenue}</Text>
           <ReactECharts option={chartOption} />
         </div>
