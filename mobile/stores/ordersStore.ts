@@ -1,13 +1,6 @@
 import { makeAutoObservable } from 'mobx';
-import axios from 'axios';
-import { API_URL } from '../config';
-
-export interface Order {
-  id: number;
-  userId: number;
-  productId: number;
-  quantity: number;
-}
+import { Order } from '../types';
+import { OrderService } from '../services/OrderService';
 
 class OrdersStore {
   orders: Order[] = [];
@@ -20,8 +13,7 @@ class OrdersStore {
   async fetchOrders() {
     this.loading = true;
     try {
-      const response = await axios.get<Order[]>(`${API_URL}/api/orders`);
-      this.orders = response.data;
+      this.orders = await OrderService.getOrders();
     } catch (error) {
       console.error('Failed to fetch orders', error);
     } finally {

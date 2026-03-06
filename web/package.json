@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "lint:fix": "eslint --fix ."
   },
   "dependencies": {
     "@ant-design/icons": "^5.0.0",
@@ -21,11 +22,19 @@
     "react-dom": "^18.0.0"
   },
   "devDependencies": {
-    "typescript": "^5.0.0",
+    "@eslint/eslintrc": "^3.3.4",
+    "@eslint/js": "^8.57.1",
     "@types/node": "^20.0.0",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
-    "eslint": "^8.0.0",
-    "eslint-config-next": "^14.0.0"
+    "@typescript-eslint/eslint-plugin": "^8.56.1",
+    "@typescript-eslint/parser": "^8.56.1",
+    "eslint": "^8.57.1",
+    "eslint-config-expo": "^55.0.0",
+    "eslint-config-next": "^14.2.35",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.5",
+    "prettier": "^3.8.1",
+    "typescript": "^5.0.0"
   }
 }
