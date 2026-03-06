@@ -1,1 +1,13 @@
+echo "🔍 Running linting in all modules..."
+
+echo "📱 Checking Mobile..."
+npm run --prefix mobile lint || exit 1
+
+echo "🌐 Checking Web..."
+npm run --prefix web lint || exit 1
+
+echo "⚙️ Checking Backend..."
+npm run --prefix backend lint || exit 1
+
+echo "✨ Running Prettier for staged files..."
 npx lint-staged

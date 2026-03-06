@@ -1,6 +1,5 @@
 'use client';
 
-import type { Metadata } from 'next';
 import { observer } from 'mobx-react-lite';
 import { themeStore } from '@/stores/themeStore';
 import './globals.css';

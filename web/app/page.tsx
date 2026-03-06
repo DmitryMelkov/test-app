@@ -7,8 +7,6 @@ import ProductsList from '@/components/ProductsList/ProductsList';
 import OrdersList from '@/components/OrdersList/OrdersList';
 import UsersList from '@/components/UsersList/UsersList';
 import Header from '@/components/Header/Header';
-import Text from '@/ui/Text';
-
 const Dashboard = observer(() => {
   useFetchData();
 
